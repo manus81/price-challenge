@@ -20,8 +20,8 @@ class PriceControllerIT {
     mockMvc.perform(MockMvcRequestBuilders.get("/prices/applicable")
             .param("productId", "9999")
             .param("brandId", "1")
-            .param("applicationDate", "2020-06-14T00:00"))
-        .andExpect(MockMvcResultMatchers.status().isNotFound());
+            .param("date", "2020-06-14T00:00"))
+        .andExpect(MockMvcResultMatchers.status().isNoContent());
   }
 
   // Test 1: petición a las 10:00 del día 14 del producto 35455 para la brand 1 (ZARA)
@@ -30,7 +30,7 @@ class PriceControllerIT {
     mockMvc.perform(MockMvcRequestBuilders.get("/prices/applicable")
             .param("productId", "35455")
             .param("brandId", "1")
-            .param("applicationDate", "2020-06-14T10:00"))
+            .param("date", "2020-06-14T10:00"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(35.50))
         .andExpect(MockMvcResultMatchers.jsonPath("$.currency").value("EUR"));
@@ -42,7 +42,7 @@ class PriceControllerIT {
     mockMvc.perform(MockMvcRequestBuilders.get("/prices/applicable")
             .param("productId", "35455")
             .param("brandId", "1")
-            .param("applicationDate", "2020-06-14T16:00"))
+            .param("date", "2020-06-14T16:00"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(25.45))
         .andExpect(MockMvcResultMatchers.jsonPath("$.currency").value("EUR"));
@@ -54,7 +54,7 @@ class PriceControllerIT {
     mockMvc.perform(MockMvcRequestBuilders.get("/prices/applicable")
             .param("productId", "35455")
             .param("brandId", "1")
-            .param("applicationDate", "2020-06-14T21:00"))
+            .param("date", "2020-06-14T21:00"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(35.5))
         .andExpect(MockMvcResultMatchers.jsonPath("$.currency").value("EUR"));
@@ -66,7 +66,7 @@ class PriceControllerIT {
     mockMvc.perform(MockMvcRequestBuilders.get("/prices/applicable")
             .param("productId", "35455")
             .param("brandId", "1")
-            .param("applicationDate", "2020-06-15T10:00"))
+            .param("date", "2020-06-15T10:00"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(30.5))
         .andExpect(MockMvcResultMatchers.jsonPath("$.currency").value("EUR"));
@@ -78,7 +78,7 @@ class PriceControllerIT {
     mockMvc.perform(MockMvcRequestBuilders.get("/prices/applicable")
             .param("productId", "35455")
             .param("brandId", "1")
-            .param("applicationDate", "2020-06-16T21:00"))
+            .param("date", "2020-06-16T21:00"))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(38.95))
         .andExpect(MockMvcResultMatchers.jsonPath("$.currency").value("EUR"));

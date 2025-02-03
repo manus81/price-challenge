@@ -1,4 +1,4 @@
-package com.challenge.price.infrastructure.adapters.web.dtos;
+package com.challenge.price.infrastructure.web.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

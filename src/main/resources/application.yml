@@ -2,6 +2,13 @@ server:
   port: 8080
   tomcat:
     enabled-apr: false
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-exception: true
+    include-stacktrace: never
+    whitelabel:
+      enabled: false
 
 logging:
   level:
